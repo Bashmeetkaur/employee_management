@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee CRUD App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    form { max-width: 400px; margin-bottom: 20px; }
+    label, input, select, button { display: block; margin: 10px 0; }
+    #employees { list-style: none; padding: 0; }
+  </style>
+</head>
+<body>
+  <h1>Employee Management</h1>
+
+  <!-- Login Form -->
+  <form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" value="admin" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" value="admin123" required>
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Employee Form (hidden until login) -->
+  <form id="employeeForm" style="display: none;">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <label for="role">Role:</label>
+    <select id="role" required>
+      <option value="developer">Developer</option>
+      <option value="manager">Manager</option>
+      <option value="designer">Designer</option>
+      <option value="other">Other</option>
+    </select>
+    <button type="submit">Add Employee</button>
+  </form>
+
+  <ul id="employees"></ul>
+
+  <script>
+    let token = '';
+
+    // Login
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const res = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (data.token) {
+        token = data.token;
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('employeeForm').style.display = 'block';
+        fetchEmployees();
+      } else {
+        alert('Login failed');
+      }
+    });
+
+    // Create Employee
+    document.getElementById('employeeForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const role = document.getElementById('role').value;
+      await fetch('http://localhost:5000/api/employees', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token
+        },
+        body: JSON.stringify({ name, email, role })
+      });
+      fetchEmployees();
+      document.getElementById('employeeForm').reset();
+    });
+
+    // Fetch All Employees
+    async function fetchEmployees() {
+      const res = await fetch('http://localhost:5000/api/employees', {
+        headers: { 'x-auth-token': token }
+      });
+      const employees = await res.json();
+      const list = document.getElementById('employees');
+      list.innerHTML = employees.map(emp => `<li>${emp.name} (${emp.email}) - ${emp.role} <button onclick="deleteEmployee('${emp._id}')">Delete</button></li>`).join('');
+    }
+
+    // Delete Employee
+    async function deleteEmployee(id) {
+      if (confirm('Are you sure?')) {
+        await fetch(`http://localhost:5000/api/employees/${id}`, {
+          method: 'DELETE',
+          headers: { 'x-auth-token': token }
+        });
+        fetchEmployees();
+      }
+    }
+  </script>
+</body>
+</html>

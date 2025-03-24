@@ -1,0 +1,299 @@
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgba(33, 35, 36, 0.381);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(64, 61, 61, 0.529);
+  min-height: 45vh;
+  margin-top: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: rgba(127, 109, 109, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input,
+select,
+button {
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+  background-color: rgba(127, 109, 109, 0.1);
+}
+
+/* Specific styles for select to match the theme */
+select {
+  -webkit-appearance: none; /* Remove default arrow in Webkit browsers */
+  -moz-appearance: none; /* Remove default arrow in Firefox */
+  appearance: none; /* Remove default arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Custom white arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+}
+
+/* Ensure the select options have a dark background (works in some browsers) */
+select option {
+  background-color: #212324; /* Dark background for options */
+  color: white;
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button[type="button"] {
+  background-color: #6c757d;
+}
+
+button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  color: white;
+  padding: 15px;
+  background-color: rgba(127, 109, 109, 0.1);
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li button {
+  padding: 8px 12px;
+  margin-left: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+li button:first-child {
+  background-color: #28a745;
+}
+
+li button:first-child:hover {
+  background-color: #218838;
+}
+
+li button:last-child {
+  background-color: #dc3545;
+}
+
+li button:last-child:hover {
+  background-color: #c82333;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.nav-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.nav-buttons + p {
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  margin: 10px 0;
+}
+
+p{
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  margin: 10px 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/* .App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgba(33, 35, 36, 0.381); 
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(64, 61, 61, 0.529);
+  min-height: 45vh;
+  margin-top: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: rgba(127, 109, 109, 0.1);
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input,
+select,
+button {
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+  background-color: rgba(127, 109, 109, 0.1); 
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button[type="button"] {
+  background-color: #6c757d;
+}
+
+button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  color: white;
+  padding: 15px;
+  background-color: rgba(127, 109, 109, 0.1);  
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li button {
+  padding: 8px 12px;
+  margin-left: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+li button:first-child {
+  background-color: #28a745;
+}
+
+li button:first-child:hover {
+  background-color: #218838;
+}
+
+li button:last-child {
+  background-color: #dc3545;
+}
+
+li button:last-child:hover {
+  background-color: #c82333;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.nav-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.nav-buttons + p {
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  margin: 10px 0;
+  color: #555;
+} 
+*/

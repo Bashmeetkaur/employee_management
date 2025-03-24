@@ -1,0 +1,29 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../public/bg.jpg'); /* Or your current background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: auto; /* Allow scrolling */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+html,
+body {
+  scrollbar-width: none; /* Hide the scrollbar */
+}
+
+/* Optional: Ensure the content inside .App is scrollable if needed */
+.App {
+  overflow: auto; /* Allow scrolling within the .App container if content overflows */
+}
